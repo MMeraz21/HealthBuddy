@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		325A03762C09972B0061C485 /* RoundedRectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A03752C09972B0061C485 /* RoundedRectLabel.swift */; };
+		325A03792C0A95930061C485 /* AddFoodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A03782C0A95930061C485 /* AddFoodItemView.swift */; };
 		327743CB2C09484800368411 /* HealthBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327743CA2C09484800368411 /* HealthBuddyApp.swift */; };
 		327743CD2C09484800368411 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327743CC2C09484800368411 /* ContentView.swift */; };
 		327743CF2C09485100368411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 327743CE2C09485100368411 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		325A03752C09972B0061C485 /* RoundedRectLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectLabel.swift; sourceTree = "<group>"; };
 		325A03772C099BF60061C485 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		325A03782C0A95930061C485 /* AddFoodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodItemView.swift; sourceTree = "<group>"; };
 		327743C72C09484800368411 /* HealthBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		327743CA2C09484800368411 /* HealthBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBuddyApp.swift; sourceTree = "<group>"; };
 		327743CC2C09484800368411 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				327743CE2C09485100368411 /* Assets.xcassets */,
 				327743D02C09485100368411 /* Preview Content */,
 				327743F42C09867000368411 /* DocumentScannerView.swift */,
+				325A03782C0A95930061C485 /* AddFoodItemView.swift */,
 			);
 			path = HealthBuddy;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				325A03792C0A95930061C485 /* AddFoodItemView.swift in Sources */,
 				325A03762C09972B0061C485 /* RoundedRectLabel.swift in Sources */,
 				327743CD2C09484800368411 /* ContentView.swift in Sources */,
 				327743CB2C09484800368411 /* HealthBuddyApp.swift in Sources */,

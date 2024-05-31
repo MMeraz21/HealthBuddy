@@ -10,6 +10,9 @@ import VisionKit
 
 @MainActor
 struct DocumentScannerView: UIViewControllerRepresentable{
+    @State private var upcString: String?
+    @State private var isNavigating: Bool = false
+    
     static let startScanLabel = "Start Scan"
     static let stopScanLabel = "Stop Scan"
     
@@ -127,6 +130,7 @@ struct DocumentScannerView: UIViewControllerRepresentable{
                 print("Should not happen")
             }
         }
+        
         func addRoundBoxToItem(frame: CGRect, text: String, item: RecognizedItem) {
              let roundedRectView = RoundedRectLabel(frame: frame)
              roundedRectView.setText(text: text)
@@ -174,7 +178,21 @@ struct DocumentScannerView: UIViewControllerRepresentable{
 
     }
 
-
+    var body: some View{
+        NavigationStack{
+            VStack{
+                NavigationLink(
+                    destination: AddFoodItemView(upc: upcString ?? ""),
+                    isActive: $isNavigating,
+                    label:{
+                        EmptyView()
+                    }
+                ).hidden()
+            }
+        }
+    }
+    
+    
 }
 
 //#Preview {
