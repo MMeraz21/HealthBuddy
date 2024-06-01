@@ -10,8 +10,8 @@ import VisionKit
 
 @MainActor
 struct DocumentScannerView: UIViewControllerRepresentable{
-    @State private var upcString: String?
-    @State private var isNavigating: Bool = false
+    @Binding var upcString: String?
+    @Binding var isNavigating: Bool
     
     static let startScanLabel = "Start Scan"
     static let stopScanLabel = "Stop Scan"
@@ -30,6 +30,11 @@ struct DocumentScannerView: UIViewControllerRepresentable{
         isHighFrameRateTrackingEnabled: false,
         isHighlightingEnabled: false
     )
+    
+    init(upcString: Binding<String?>, isNavigating: Binding<Bool>) {
+        _upcString = upcString
+        _isNavigating = isNavigating
+    }
 
     func makeUIViewController(context: Context) -> DataScannerViewController{
         scannerViewController.delegate = context.coordinator
@@ -122,6 +127,10 @@ struct DocumentScannerView: UIViewControllerRepresentable{
                 //print("Text Observation - \(barcode.observation)")
                 if let payloadString = barcode.payloadStringValue{
                     print(payloadString)
+                    DispatchQueue.main.async{
+                        self.parent.upcString = payloadString
+                        self.parent.isNavigating = true
+                    }
                 }
                 //print("Text transcript - \(barcode.transcript)")
                 //let frame = getRoundBoxFrame(item: item)
@@ -178,19 +187,19 @@ struct DocumentScannerView: UIViewControllerRepresentable{
 
     }
 
-    var body: some View{
-        NavigationStack{
-            VStack{
-                NavigationLink(
-                    destination: AddFoodItemView(upc: upcString ?? ""),
-                    isActive: $isNavigating,
-                    label:{
-                        EmptyView()
-                    }
-                ).hidden()
-            }
-        }
-    }
+//    var body: some View{
+//        NavigationStack{
+//            VStack{
+//                NavigationLink(
+//                    destination: AddFoodItemView(upc: upcString ?? ""),
+//                    isActive: $isNavigating,
+//                    label:{
+//                        EmptyView()
+//                    }
+//                ).hidden()
+//            }
+//        }
+//    }
     
     
 }
