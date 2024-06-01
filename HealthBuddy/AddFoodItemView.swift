@@ -9,6 +9,11 @@ import SwiftUI
 
 struct AddFoodItemView: View {
     var upc: String
+    var feed =  "https://us.openfoodfacts.org/api/v0/product/0043000208120.json"
+    
+    func parseSingleObj(){
+        
+    }
     
     var body: some View {
         VStack {
@@ -20,7 +25,8 @@ struct AddFoodItemView: View {
         .background(Color.white) // Explicitly setting background color
         .edgesIgnoringSafeArea(.all) // Ensure the background color covers the entire view
         .navigationBarHidden(true)
-    }}
+    }
+}
 
 #Preview {
     AddFoodItemView(upc: "123456789012")
