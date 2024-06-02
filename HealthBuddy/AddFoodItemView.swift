@@ -15,6 +15,11 @@ struct AddFoodItemView: View {
     @State private var currObj = FoodItem()
     @State private var pname: String = ""
     @State private var viewCalories: Double = 0.0
+    @State private var viewFat: Double = 0.0
+    @State private var viewProtein: Double = 0.0
+    @State private var viewCarbs: Double = 0.0
+    @State private var viewSugar: Double = 0.0
+    
     @State private var servingSize: Double = 100.0
     
     enum SerializationError: Error{
@@ -97,6 +102,10 @@ struct AddFoodItemView: View {
     
     func updateNutriments(){
         viewCalories = (servingSize/100.0) * currObj.calories
+        viewFat = (servingSize/100.0) * currObj.fat
+        viewProtein = (servingSize/100.0) * currObj.protein
+        viewCarbs = (servingSize/100.0) * currObj.carbs
+        viewSugar = (servingSize/100.0) * currObj.sugar
     }
     
     var body: some View {
@@ -150,15 +159,54 @@ struct AddFoodItemView: View {
                     .foregroundColor(.black)
                     .padding()
             }
-            Text("Fat: \(currObj.fat)")
-                .foregroundColor(.black)
-                .padding()
-            Text("Protein: \(currObj.protein)")
-                .foregroundColor(.black)
-                .padding()
-            Text("Carbohydrates: \(currObj.carbs)")
-                .foregroundColor(.black)
-                .padding()
+            HStack{
+                Text("Fat")
+                    .foregroundColor(.black)
+                    .padding()
+                
+                Spacer()
+                
+                Text("\(Int(viewFat)) g")
+                    .foregroundColor(.black)
+                    .padding()
+                
+            }
+            HStack{
+                Text("Protein")
+                    .foregroundColor(.black)
+                    .padding()
+                
+                Spacer()
+                
+                Text("\(Int(viewProtein)) g")
+                    .foregroundColor(.black)
+                    .padding()
+                
+            }
+            HStack{
+                Text("Carbohydrates")
+                    .foregroundColor(.black)
+                    .padding()
+                
+                Spacer()
+                
+                Text("\(Int(viewCarbs)) g")
+                    .foregroundColor(.black)
+                    .padding()
+                
+            }
+            HStack{
+                Text("Sugar")
+                    .foregroundColor(.black)
+                    .padding()
+                
+                Spacer()
+                
+                Text("\(Int(viewSugar)) g")
+                    .foregroundColor(.black)
+                    .padding()
+            }
+            
             Button(action: {
                 print("Blue button pressed")
             }) {
