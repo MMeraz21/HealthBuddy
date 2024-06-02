@@ -15,10 +15,16 @@ struct AddFoodItemView: View {
     @State private var currObj = FoodItem()
     @State private var pname: String = ""
     @State private var viewCalories: Int = 0
+    @State private var servingSize: Double = 100.0
     
     enum SerializationError: Error{
         case missing(String)
         case invalid(String, Any)
+    }
+    var formatter: NumberFormatter{
+        let form = NumberFormatter()
+        form.numberStyle = .decimal
+        return form
     }
     
     func parseSingleObj(){
@@ -80,18 +86,46 @@ struct AddFoodItemView: View {
     
     var body: some View {
         VStack {
-            Text("UPC: \(upc)")
-                .foregroundColor(.black)
-                .padding()
-            Text("HELLO???")
-                .foregroundColor(.black)
-                .padding()
-            Text("Name: \(pname)")
-                .foregroundColor(.black)
-                .padding()
-            Text("Calories: \(currObj.calories)")
-                .foregroundColor(.black)
-                .padding()
+            VStack{
+                Text(currObj.productName)
+                    .foregroundColor(.black)
+                    .padding(.bottom, 2)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(currObj.brandName)
+                    .foregroundColor(.black)
+                    .padding(.bottom, 2)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+            }
+            HStack{
+                Text("Serving Size")
+                    .foregroundColor(.black)
+                    .padding()
+                
+                Spacer()
+                
+                TextField("100.0", value: $servingSize, formatter: formatter)
+                    .textFieldStyle(WhiteBGStyle())
+                    .keyboardType(.decimalPad)
+                    .frame(minWidth: 30)
+                    .fixedSize(horizontal: true, vertical: false)
+                    .padding(.leading, 8)
+                    //.padding(.bottom, 2)
+                    //.foregroundColor(.black)
+                    .background(Color.white)
+
+
+                
+                Text("g")
+                    .foregroundColor(.black)
+                    .padding()
+
+            }
+            HStack{
+                Text("Calories: \(currObj.calories)")
+                    .foregroundColor(.black)
+                    .padding()
+            }
             Text("Fat: \(currObj.fat)")
                 .foregroundColor(.black)
                 .padding()
@@ -122,6 +156,20 @@ struct AddFoodItemView: View {
     }
 }
 
+struct WhiteBGStyle: TextFieldStyle {
+    func _body(configuration: TextField<_Label>) -> some View {
+        configuration
+            .padding(5)
+            .background(Color.white)
+            .cornerRadius(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(Color.gray, lineWidth: 1)
+            )
+            .foregroundColor(.black)
+    }
+}
+
 #Preview {
-    AddFoodItemView(upc: "123456789012")
+    AddFoodItemView(upc: "043000208120")
 }

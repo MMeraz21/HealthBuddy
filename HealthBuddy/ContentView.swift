@@ -25,6 +25,7 @@ struct ContentView: View {
                     EmptyView()
                 }
             }
+            //.background(Color.white)
         }
     }
 }
