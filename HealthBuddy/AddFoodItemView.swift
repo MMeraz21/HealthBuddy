@@ -14,7 +14,7 @@ struct AddFoodItemView: View {
     }
     @State private var currObj = FoodItem()
     @State private var pname: String = ""
-    @State private var viewCalories: Int = 0
+    @State private var viewCalories: Double = 0.0
     @State private var servingSize: Double = 100.0
     
     enum SerializationError: Error{
@@ -26,6 +26,15 @@ struct AddFoodItemView: View {
         form.numberStyle = .decimal
         return form
     }
+    
+    var cals: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+        return formatter.string(from: NSNumber(value: currObj.calories)) ?? "N/A"
+    }
+    
+    
     
     func parseSingleObj(){
         print("parsing obj")
@@ -72,7 +81,7 @@ struct AddFoodItemView: View {
                 DispatchQueue.main.async{
                     currObj = FoodItem(productName: name, brandName: brandName, protein: protein, sugar: sugar, calories: calories, carbs: carbohydrates, fat: fat)
                     pname = currObj.productName
-                    //viewCalories  = currObj.calories
+                    viewCalories  = currObj.calories
                 }
 
                 
@@ -82,6 +91,12 @@ struct AddFoodItemView: View {
             
             
         }.resume()
+        
+
+    }
+    
+    func updateNutriments(){
+        viewCalories = (servingSize/100.0) * currObj.calories
     }
     
     var body: some View {
@@ -89,14 +104,17 @@ struct AddFoodItemView: View {
             VStack{
                 Text(currObj.productName)
                     .foregroundColor(.black)
-                    .padding(.bottom, 2)
+                    .padding(.bottom, 4)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(currObj.brandName)
                     .foregroundColor(.black)
-                    .padding(.bottom, 2)
+                    .padding(.bottom, 4)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
             }
+            
+            //Spacer()
+            
             HStack{
                 Text("Serving Size")
                     .foregroundColor(.black)
@@ -122,7 +140,13 @@ struct AddFoodItemView: View {
 
             }
             HStack{
-                Text("Calories: \(currObj.calories)")
+                Text("Calories")
+                    .foregroundColor(.black)
+                    .padding()
+                
+                Spacer()
+                
+                Text("\(Int(viewCalories)) kcal")
                     .foregroundColor(.black)
                     .padding()
             }
@@ -152,6 +176,10 @@ struct AddFoodItemView: View {
         .navigationBarHidden(true)
         .onAppear{
             parseSingleObj()
+        }
+        .onChange(of: servingSize){ newvalue in
+            updateNutriments()
+            
         }
     }
 }
