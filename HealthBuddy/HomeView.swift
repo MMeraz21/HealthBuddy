@@ -9,10 +9,30 @@ import SwiftUI
 
 struct HomeView: View {
     var username: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            TabView {
+                VStack {
+                    Text("Home")
+                }
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("Home")
+                }
+            }
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarItems(leading: Text("HealthBuddy").font(.title).foregroundColor(.blue))
+
+
+        }
+        .navigationBarHidden(true)
+
     }
 }
+
+
+
 
 #Preview {
     HomeView(username: "Johnny")
