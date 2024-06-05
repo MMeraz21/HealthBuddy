@@ -132,6 +132,8 @@ struct DocumentScannerView: UIViewControllerRepresentable{
                         self.parent.isNavigating = true
                     }
                 }
+                print("returning soon")
+                return
                 //print("Text transcript - \(barcode.transcript)")
                 //let frame = getRoundBoxFrame(item: item)
                 //addRoundBoxToItem(frame: frame, barcode: barcode.observation, item: item)

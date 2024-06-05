@@ -128,6 +128,13 @@ struct AddFoodItemView: View {
             .frame(alignment: .topLeading)
             .padding([.top, .leading, .trailing])
             .alignmentGuide(.top) { d in d[.top] }
+            .padding(.horizontal)
+            //.padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth: 1)
+            )
+            .padding(.horizontal)
             
             Spacer().frame(height: 100)
             
