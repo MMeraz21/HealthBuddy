@@ -87,6 +87,10 @@ struct AddFoodItemView: View {
                     currObj = FoodItem(productName: name, brandName: brandName, protein: protein, sugar: sugar, calories: calories, carbs: carbohydrates, fat: fat)
                     pname = currObj.productName
                     viewCalories  = currObj.calories
+                    viewFat = currObj.fat
+                    viewProtein = currObj.protein
+                    viewCarbs = currObj.carbs
+                    viewSugar = currObj.sugar
                 }
 
                 
@@ -110,7 +114,7 @@ struct AddFoodItemView: View {
     
     var body: some View {
         VStack {
-            VStack{
+            VStack(alignment: .leading){
                 Text(currObj.productName)
                     .foregroundColor(.black)
                     .padding(.bottom, 4)
@@ -121,8 +125,11 @@ struct AddFoodItemView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
 
             }
+            .frame(alignment: .topLeading)
+            .padding([.top, .leading, .trailing])
+            .alignmentGuide(.top) { d in d[.top] }
             
-            //Spacer()
+            Spacer().frame(height: 100)
             
             HStack{
                 Text("Serving Size")
@@ -206,6 +213,7 @@ struct AddFoodItemView: View {
                     .foregroundColor(.black)
                     .padding()
             }
+            Spacer().frame(height: 100)
             
             Button(action: {
                 print("Blue button pressed")
@@ -217,6 +225,9 @@ struct AddFoodItemView: View {
                     .cornerRadius(8)
             }
             .padding()
+            
+            Spacer().frame(height: 5)
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity) //needed to not inherit bg from parent view
         .background(Color.white)
