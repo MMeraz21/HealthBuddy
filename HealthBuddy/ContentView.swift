@@ -8,25 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var upcString: String?
-    @State private var isNavigating: Bool = false
+    @State private var username: String = ""
+
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Scan a document")
-                    .font(.title)
+        VStack{
+            Text("HealthBuddy")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(.blue)
+                .padding(.top, 16)
+            
+            Spacer()
+            
+            TextField("Enter your username", text: $username)
+                .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(40)
+                .padding(.horizontal, 20)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+            
+            Spacer()
+            
+            NavigationLink(destination: HomeView(username: username)) {
+                Text("Login")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
                     .padding()
-                DocumentScannerView(upcString: $upcString, isNavigating: $isNavigating)
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
-                
-                NavigationLink(destination: AddFoodItemView(upc: upcString ?? ""), isActive: $isNavigating) {
-                    EmptyView()
-                }
+                    .background(Color.blue)
+                    .cornerRadius(20)
             }
-            //.background(Color.white)
         }
+        .padding()
     }
 }
 

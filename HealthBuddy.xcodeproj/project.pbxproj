@@ -18,6 +18,9 @@
 		327743E62C09485100368411 /* HealthBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327743E52C09485100368411 /* HealthBuddyUITests.swift */; };
 		327743E82C09485100368411 /* HealthBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327743E72C09485100368411 /* HealthBuddyUITestsLaunchTests.swift */; };
 		327743F52C09867100368411 /* DocumentScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327743F42C09867000368411 /* DocumentScannerView.swift */; };
+		32FEC2B92C1015C500A09524 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEC2B82C1015C500A09524 /* ScannerView.swift */; };
+		32FEC2BD2C101B6900A09524 /* DailyNutritionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEC2BC2C101B6900A09524 /* DailyNutritionLog.swift */; };
+		32FEC2BF2C10415100A09524 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEC2BE2C10415000A09524 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		327743E52C09485100368411 /* HealthBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBuddyUITests.swift; sourceTree = "<group>"; };
 		327743E72C09485100368411 /* HealthBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		327743F42C09867000368411 /* DocumentScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerView.swift; sourceTree = "<group>"; };
+		32FEC2B82C1015C500A09524 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		32FEC2BC2C101B6900A09524 /* DailyNutritionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNutritionLog.swift; sourceTree = "<group>"; };
+		32FEC2BE2C10415000A09524 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,9 @@
 				327743F42C09867000368411 /* DocumentScannerView.swift */,
 				325A03782C0A95930061C485 /* AddFoodItemView.swift */,
 				325A037A2C0AB13B0061C485 /* FoodItem.swift */,
+				32FEC2B82C1015C500A09524 /* ScannerView.swift */,
+				32FEC2BC2C101B6900A09524 /* DailyNutritionLog.swift */,
+				32FEC2BE2C10415000A09524 /* HomeView.swift */,
 			);
 			path = HealthBuddy;
 			sourceTree = "<group>";
@@ -271,11 +280,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32FEC2BF2C10415100A09524 /* HomeView.swift in Sources */,
 				325A03792C0A95930061C485 /* AddFoodItemView.swift in Sources */,
 				325A03762C09972B0061C485 /* RoundedRectLabel.swift in Sources */,
 				327743CD2C09484800368411 /* ContentView.swift in Sources */,
+				32FEC2BD2C101B6900A09524 /* DailyNutritionLog.swift in Sources */,
 				327743CB2C09484800368411 /* HealthBuddyApp.swift in Sources */,
 				325A037B2C0AB13B0061C485 /* FoodItem.swift in Sources */,
+				32FEC2B92C1015C500A09524 /* ScannerView.swift in Sources */,
 				327743F52C09867100368411 /* DocumentScannerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
