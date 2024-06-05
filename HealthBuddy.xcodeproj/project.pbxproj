@@ -21,6 +21,7 @@
 		32FEC2B92C1015C500A09524 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEC2B82C1015C500A09524 /* ScannerView.swift */; };
 		32FEC2BD2C101B6900A09524 /* DailyNutritionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEC2BC2C101B6900A09524 /* DailyNutritionLog.swift */; };
 		32FEC2BF2C10415100A09524 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEC2BE2C10415000A09524 /* HomeView.swift */; };
+		32FEC2C12C1048FF00A09524 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FEC2C02C1048FF00A09524 /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		32FEC2B82C1015C500A09524 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		32FEC2BC2C101B6900A09524 /* DailyNutritionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNutritionLog.swift; sourceTree = "<group>"; };
 		32FEC2BE2C10415000A09524 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		32FEC2C02C1048FF00A09524 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				32FEC2B82C1015C500A09524 /* ScannerView.swift */,
 				32FEC2BC2C101B6900A09524 /* DailyNutritionLog.swift */,
 				32FEC2BE2C10415000A09524 /* HomeView.swift */,
+				32FEC2C02C1048FF00A09524 /* UserProfile.swift */,
 			);
 			path = HealthBuddy;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			files = (
 				32FEC2BF2C10415100A09524 /* HomeView.swift in Sources */,
 				325A03792C0A95930061C485 /* AddFoodItemView.swift in Sources */,
+				32FEC2C12C1048FF00A09524 /* UserProfile.swift in Sources */,
 				325A03762C09972B0061C485 /* RoundedRectLabel.swift in Sources */,
 				327743CD2C09484800368411 /* ContentView.swift in Sources */,
 				32FEC2BD2C101B6900A09524 /* DailyNutritionLog.swift in Sources */,

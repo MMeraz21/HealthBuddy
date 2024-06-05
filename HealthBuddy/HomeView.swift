@@ -9,16 +9,35 @@ import SwiftUI
 
 struct HomeView: View {
     var username: String
+    var userProfile: UserProfile?
+    var dailyLog: DailyNutritionLog?
     
     var body: some View {
         NavigationView {
+            //Text("hello")
             TabView {
                 VStack {
-                    Text("Home")
+                    Text("Welcome Back, \(username)!")
+                    
                 }
+
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
+                }
+                VStack{
+                    Text("Add")
+                }
+                .tabItem {
+                    Image(systemName: "plus.circle.fill")
+                    Text("Add")
+                }
+                VStack{
+                    Text("History")
+                }
+                .tabItem {
+                    Image(systemName: "clock.fill")
+                    Text("History")
                 }
             }
             .navigationBarTitle("", displayMode: .inline)
@@ -35,5 +54,6 @@ struct HomeView: View {
 
 
 #Preview {
-    HomeView(username: "Johnny")
+    HomeView(username: "Johnny", userProfile: UserProfile(username: "Johnny", history: [], addedFoodItems: []))
 }
+
