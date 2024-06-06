@@ -15,19 +15,24 @@ struct SearchView: View {
     var body: some View {
         //NavigationView{
             VStack{
-                HStack{
-                    Image(systemName: "magnifyingglass")
+                HStack {
                     TextField("Search...", text: $searchText)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(8)
+                        .padding(7)
+                        .padding(.horizontal, 25)
                         .background(Color(.systemGray6))
                         .cornerRadius(8)
-                    NavigationLink(destination: ScannerView(), isActive: $toScannerView){
-                        Image(systemName: "barcode.viewfinder")
-                            .onTapGesture {
-                                toScannerView = true
+                        .overlay(
+                            HStack {
+                                Spacer()
+                                Image(systemName: "barcode.viewfinder")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 8)
+                                    .onTapGesture {
+                                        toScannerView = true
+                                    }
                             }
-                    }
+                        )
+                        .padding(.horizontal, 10)
                 }
                 NavigationLink(
                     destination: ScannerView(),

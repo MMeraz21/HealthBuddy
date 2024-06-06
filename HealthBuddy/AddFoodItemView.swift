@@ -23,6 +23,8 @@ struct AddFoodItemView: View {
     @State private var servingSize: Double = 100.0
     
     @State private var isHomeViewActive: Bool = false
+    @State private var isNavigatingToHomeView = false
+
     @Environment(\.presentationMode) var presentationMode
 
     
@@ -227,7 +229,8 @@ struct AddFoodItemView: View {
             Spacer().frame(height: 100)
             
             Button(action: {
-                presentationMode.wrappedValue.dismiss()
+                //presentationMode.wrappedValue.dismiss()
+                isNavigatingToHomeView = true
             }) {
                 Text("Blue Button")
                     .foregroundColor(.white)
@@ -238,6 +241,14 @@ struct AddFoodItemView: View {
             .padding()
             
             Spacer().frame(height: 5)
+            
+            NavigationLink(
+                destination: HomeView(username: "Johnny", userProfile: UserProfile(username: "Johnny", history: [], addedFoodItems: [])),
+                isActive: $isNavigatingToHomeView,
+                label: {
+                    EmptyView()
+                }
+            )
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity) //needed to not inherit bg from parent view

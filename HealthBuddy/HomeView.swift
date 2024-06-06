@@ -47,19 +47,18 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    
-                    
                 }
-
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
+                
                 SearchView()
                 .tabItem {
                     Image(systemName: "plus.circle.fill")
                     Text("Add")
                 }
+                
                 VStack{
                     Text("History")
                 }
