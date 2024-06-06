@@ -93,7 +93,6 @@
 		327743BE2C09484800368411 = {
 			isa = PBXGroup;
 			children = (
-				32FEC2C22C1131FE00A09524 /* SearchView.swift */,
 				327743C92C09484800368411 /* HealthBuddy */,
 				327743DA2C09485100368411 /* HealthBuddyTests */,
 				327743E42C09485100368411 /* HealthBuddyUITests */,
@@ -114,6 +113,7 @@
 		327743C92C09484800368411 /* HealthBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				32FEC2C22C1131FE00A09524 /* SearchView.swift */,
 				325A03772C099BF60061C485 /* Info.plist */,
 				325A03752C09972B0061C485 /* RoundedRectLabel.swift */,
 				327743CA2C09484800368411 /* HealthBuddyApp.swift */,
