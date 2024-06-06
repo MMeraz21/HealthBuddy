@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import Charts
 
 struct HomeView: View {
     var username: String
     var userProfile: UserProfile?
     var dailyLog: DailyNutritionLog?
+    
+    var todayDate: String{
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter.string(from: Date())
+    }
     
     var body: some View {
         NavigationView {
@@ -18,6 +25,29 @@ struct HomeView: View {
             TabView {
                 VStack {
                     Text("Welcome Back, \(username)!")
+                        //.font(.largeTitle)
+                        .foregroundColor(.blue)
+                        .padding(.top, 20)
+                    
+                    Text(todayDate)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.top, 5)
+                    
+                    Spacer()
+                    
+                    VStack {
+                        Text("Calorie Goal:")
+                        if let remainingCalories = dailyLog?.calorieLimit {
+                            Text("\(remainingCalories - (dailyLog?.totalCalories() ?? 0.0))")
+                        } else {
+                            Text("No data available")
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    
                     
                 }
 
@@ -25,9 +55,7 @@ struct HomeView: View {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
-                VStack{
-                    Text("Add")
-                }
+                SearchView()
                 .tabItem {
                     Image(systemName: "plus.circle.fill")
                     Text("Add")
