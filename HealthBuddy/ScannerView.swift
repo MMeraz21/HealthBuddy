@@ -14,9 +14,9 @@ struct ScannerView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Scan a document")
-                    .font(.title)
-                    .padding()
+//                Text("Scan a document")
+//                    .font(.title)
+//                    .padding()
                 DocumentScannerView(upcString: $upcString, isNavigating: $isNavigating)
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
@@ -24,9 +24,14 @@ struct ScannerView: View {
                 NavigationLink(destination: AddFoodItemView(upc: upcString ?? ""), isActive: $isNavigating) {
                     EmptyView()
                 }
+//                .navigationBarTitle("")
+//                .navigationBarHidden(true)
             }
             //.background(Color.white)
+
         }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
 

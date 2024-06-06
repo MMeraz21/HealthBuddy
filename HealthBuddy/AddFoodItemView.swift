@@ -22,6 +22,10 @@ struct AddFoodItemView: View {
     
     @State private var servingSize: Double = 100.0
     
+    @State private var isHomeViewActive: Bool = false
+    @Environment(\.presentationMode) var presentationMode
+
+    
     enum SerializationError: Error{
         case missing(String)
         case invalid(String, Any)
@@ -136,7 +140,7 @@ struct AddFoodItemView: View {
             )
             .padding(.horizontal)
             
-            Spacer().frame(height: 100)
+            Spacer().frame(height: 40)
             
             HStack{
                 Text("Serving Size")
@@ -223,7 +227,7 @@ struct AddFoodItemView: View {
             Spacer().frame(height: 100)
             
             Button(action: {
-                print("Blue button pressed")
+                presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Blue Button")
                     .foregroundColor(.white)

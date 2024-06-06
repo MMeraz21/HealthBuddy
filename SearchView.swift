@@ -13,7 +13,7 @@ struct SearchView: View {
     @State private var toScannerView: Bool = false
     
     var body: some View {
-        NavigationView{
+        //NavigationView{
             VStack{
                 HStack{
                     Image(systemName: "magnifyingglass")
@@ -22,13 +22,23 @@ struct SearchView: View {
                         .padding(8)
                         .background(Color(.systemGray6))
                         .cornerRadius(8)
-                    Image(systemName: "barcode.viewfinder")
-                        .onTapGesture {
-                            toScannerView = true
-                        }
+                    NavigationLink(destination: ScannerView(), isActive: $toScannerView){
+                        Image(systemName: "barcode.viewfinder")
+                            .onTapGesture {
+                                toScannerView = true
+                            }
+                    }
                 }
+                NavigationLink(
+                    destination: ScannerView(),
+                    isActive: $toScannerView,
+                    label: {
+                        EmptyView()
+                    }
+                )
+
             }
-        }
+        //}
     }
 }
 
