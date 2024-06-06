@@ -48,25 +48,27 @@ struct SearchView: View {
                 var foodItems: [FoodItem] = []
 
                 for product in products {
-                    print(product)
-                    guard let productDict = product["product"] as? [String: Any],
-                          let nutriments = productDict["nutriments"] as? [String: Any],
-                          let name = productDict["product_name"] as? String,
-                          let brandName = productDict["brands"] as? String,
-                          let sugar = nutriments["sugars_100g"] as? Double,
-                          let calories = nutriments["energy-kcal_100g"] as? Double,
-                          let fat = nutriments["fat_100g"] as? Double,
-                          let protein = nutriments["proteins_100g"] as? Double,
-                          let carbohydrates = nutriments["carbohydrates_100g"] as? Double else {
-                        print("Invalid product data")
-                        continue
-                    }
-
+                    let name = product["product_name"] as? String ?? "Unknown"
+                    //print(name)
+                    let nutriments = product["nutriments"] as? [String:Any]
+                    let brandName = product["brands"] as? String ?? "Unknown"
+                    //print(brandName)
+                    let sugar = nutriments?["sugars_100g"] as? Double ?? 0.0
+                    //print(sugar)
+                    let calories = nutriments?["energy-kcal_100g"] as? Double ?? 0.0
+                    //print(calories)
+                    let fat = nutriments?["fat_100g"] as? Double ?? 0.0
+                    //print(fat)
+                    let protein = nutriments?["proteins_100g"] as? Double ?? 0.0
+                    //print(protein)
+                    let carbohydrates = nutriments?["carbohydrates_100g"] as? Double ?? 0.0
+                    //print(carbohydrates)
+                    //print(nutriments)
                     let foodItem = FoodItem(productName: name, brandName: brandName, protein: protein, sugar: sugar, calories: calories, carbs: carbohydrates, fat: fat)
                     foodItems.append(foodItem)
                 }
 
-                print(foodItems)
+                //print(foodItems)
                 DispatchQueue.main.async{
                     searchResults = foodItems
                 }
