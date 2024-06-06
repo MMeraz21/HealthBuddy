@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FoodItem{
+class FoodItem: Identifiable{
     var productName: String = ""
     var brandName: String = ""
     var protein: Double = 0.0
