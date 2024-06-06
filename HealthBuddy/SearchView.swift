@@ -127,11 +127,15 @@ struct SearchView: View {
                                 .font(.subheadline)
                             // Add more details as needed
                         }
-                        .padding(.vertical, 8)
+                        .padding()
+                        .cornerRadius(8)
+                        .shadow(radius: 1)
                     }
+
                 } else {
                     Text("No search results found")
                         .foregroundColor(.gray)
+                    Spacer()
                 }
 
             }
