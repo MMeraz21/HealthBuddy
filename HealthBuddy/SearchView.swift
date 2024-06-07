@@ -120,17 +120,29 @@ struct SearchView: View {
                 //add search items here
                 if let searchResults = searchResults {
                     List(searchResults) { foodItem in
-                        VStack(alignment: .leading) {
-                            Text(foodItem.productName)
-                                .font(.headline)
-                            Text(foodItem.brandName)
-                                .font(.subheadline)
-                            // Add more details as needed
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(foodItem.productName)
+                                    .font(.headline)
+                                Text(foodItem.brandName)
+                                    .font(.subheadline)
+                                // Add more details as needed
+                            }
+                            
+                            Spacer()
+                            
+                            Image(systemName: "plus.circle")
+                                .foregroundColor(.blue)
+                                .onTapGesture {
+                                    // Handle tap action here
+                                }
                         }
                         .padding()
                         .cornerRadius(8)
-                        .shadow(radius: 1)
+                        //.shadow(radius: 1)
                     }
+                    .listStyle(.insetGrouped)
+
 
                 } else {
                     Text("No search results found")
