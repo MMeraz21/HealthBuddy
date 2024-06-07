@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AddFoodItemView: View {
-    var upc: String
+    var upc: String?
+    var foodItem: FoodItem?
     var feed: String {
         return "https://us.openfoodfacts.org/api/v0/product/\(upc).json"
     }
@@ -90,7 +91,7 @@ struct AddFoodItemView: View {
                 let carbohydrates = nutriments["carbohydrates_100g"] as? Double ?? 0.0
                 print(carbohydrates)
                 DispatchQueue.main.async{
-                    currObj = FoodItem(productName: name, brandName: brandName, protein: protein, sugar: sugar, calories: calories, carbs: carbohydrates, fat: fat)
+                    currObj = FoodItem(productName: name, brandName: brandName, protein: protein, sugar: sugar, calories: calories, carbs: carbohydrates, fat: fat, servingGrams: 100.0)
                     pname = currObj.productName
                     viewCalories  = currObj.calories
                     viewFat = currObj.fat
@@ -256,7 +257,18 @@ struct AddFoodItemView: View {
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
         .onAppear{
-            parseSingleObj()
+            if let foodItem = foodItem{
+                currObj = foodItem
+                pname = foodItem.productName
+                viewCalories = foodItem.calories
+                viewFat = foodItem.fat
+                viewProtein = foodItem.protein
+                viewCarbs = foodItem.carbs
+                viewSugar = foodItem.sugar
+                
+            }else{
+                parseSingleObj()
+            }
         }
         .onChange(of: servingSize){ newvalue in
             updateNutriments()

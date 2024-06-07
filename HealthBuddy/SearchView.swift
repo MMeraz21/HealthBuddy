@@ -64,7 +64,7 @@ struct SearchView: View {
                     let carbohydrates = nutriments?["carbohydrates_100g"] as? Double ?? 0.0
                     //print(carbohydrates)
                     //print(nutriments)
-                    let foodItem = FoodItem(productName: name, brandName: brandName, protein: protein, sugar: sugar, calories: calories, carbs: carbohydrates, fat: fat)
+                    let foodItem = FoodItem(productName: name, brandName: brandName, protein: protein, sugar: sugar, calories: calories, carbs: carbohydrates, fat: fat, servingGrams: 100.0)
                     foodItems.append(foodItem)
                 }
 
@@ -126,7 +126,6 @@ struct SearchView: View {
                                     .font(.headline)
                                 Text(foodItem.brandName)
                                     .font(.subheadline)
-                                // Add more details as needed
                             }
                             
                             Spacer()
