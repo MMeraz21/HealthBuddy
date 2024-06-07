@@ -16,7 +16,7 @@ class DailyNutritionLog: Codable {
     var carbLimit: Double
     var sugarLimit: Double
     
-    init(foodItems: [FoodItem] = [], date: Date = Date(), calorieLimit: Double, fatLimit: Double, proteinLimit: Double, carbLimit: Double, sugarLimit: Double) {
+    init(foodItems: [FoodItem] = [], date: Date = Date(), calorieLimit: Double = 2000, fatLimit: Double = 70, proteinLimit: Double = 50, carbLimit: Double = 300, sugarLimit: Double = 90) {
         self.foodItems = foodItems
         self.date = date
         self.calorieLimit = calorieLimit

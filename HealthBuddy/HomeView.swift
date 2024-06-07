@@ -83,16 +83,28 @@ struct HomeView: View {
         if let loadedProfile = UserProfileManager.loadUserProfile(username: username) {
             print("loading profile")
             userProfile = loadedProfile
+            if let todayLog = loadedProfile.history.first(where: { Calendar.current.isDateInToday($0.date) }){
+                print("loading log for today")
+                dailyLog = todayLog
+            }else{
+                print("creating log for today")
+                let newLog = DailyNutritionLog(date: Date())
+                dailyLog = newLog
+                userProfile?.history.append(newLog)
+                UserProfileManager.saveUserProfile(loadedProfile)
+            }
         } else {
             let newUserProfile = UserProfile(username: username, history: [], addedFoodItems: [])
             userProfile = newUserProfile
+            let newLog = DailyNutritionLog()
+            dailyLog = newLog
+            userProfile?.history.append(newLog)
             UserProfileManager.saveUserProfile(newUserProfile)
-            print("making profile")
+            print("making profile and log")
         }
         
-        // Initialize dailyLog or load from userProfile if needed
         if let profile = userProfile {
-            dailyLog = profile.history.first // Example: Load the first log
+            dailyLog = profile.history.first 
         }
     }
 }
