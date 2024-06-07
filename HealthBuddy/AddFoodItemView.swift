@@ -244,7 +244,7 @@ struct AddFoodItemView: View {
             Spacer().frame(height: 5)
             
             NavigationLink(
-                destination: HomeView(username: "Johnny", userProfile: UserProfile(username: "Johnny", history: [], addedFoodItems: [])),
+                destination: HomeView(username: "Johnny"),
                 isActive: $isNavigatingToHomeView,
                 label: {
                     EmptyView()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DailyNutritionLog {
+class DailyNutritionLog: Codable {
     var foodItems: [FoodItem]
     var date: Date
     var calorieLimit: Double

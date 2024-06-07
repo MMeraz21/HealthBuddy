@@ -10,8 +10,8 @@ import Charts
 
 struct HomeView: View {
     var username: String
-    var userProfile: UserProfile?
-    var dailyLog: DailyNutritionLog?
+    @State private var userProfile: UserProfile?
+    @State private var dailyLog: DailyNutritionLog?
     
     var todayDate: String{
         let formatter = DateFormatter()
@@ -74,14 +74,34 @@ struct HomeView: View {
         }
         .navigationBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear{
+            setUpUserProfile()
+        }
 
+    }
+    private func setUpUserProfile(){
+        if let loadedProfile = UserProfileManager.loadUserProfile(username: username) {
+            print("loading profile")
+            userProfile = loadedProfile
+        } else {
+            let newUserProfile = UserProfile(username: username, history: [], addedFoodItems: [])
+            userProfile = newUserProfile
+            UserProfileManager.saveUserProfile(newUserProfile)
+            print("making profile")
+        }
+        
+        // Initialize dailyLog or load from userProfile if needed
+        if let profile = userProfile {
+            dailyLog = profile.history.first // Example: Load the first log
+        }
     }
 }
 
 
 
 
+
 #Preview {
-    HomeView(username: "Johnny", userProfile: UserProfile(username: "Johnny", history: [], addedFoodItems: []))
+    HomeView(username: "Johnny")
 }
 

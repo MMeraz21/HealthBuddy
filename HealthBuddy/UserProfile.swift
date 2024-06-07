@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserProfile{
+class UserProfile: Codable{
     var username: String
     var history: [DailyNutritionLog]
     var addedFoodItems: [FoodItem]
