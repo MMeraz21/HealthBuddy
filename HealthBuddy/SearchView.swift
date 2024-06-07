@@ -11,6 +11,7 @@ struct SearchView: View {
     @State private var searchText: String = ""
     @State private var searchResults: [FoodItem]?
     @State private var toScannerView: Bool = false
+    @State private var selectedFoodItem: FoodItem?
     
     var feed: String {
         return "https://us.openfoodfacts.org/cgi/search.pl?search_terms=\(searchText)&search_simple=1&action=process&json=1"
@@ -133,7 +134,7 @@ struct SearchView: View {
                             Image(systemName: "plus.circle")
                                 .foregroundColor(.blue)
                                 .onTapGesture {
-                                    // Handle tap action here
+                                    selectedFoodItem = foodItem
                                 }
                         }
                         .padding()
