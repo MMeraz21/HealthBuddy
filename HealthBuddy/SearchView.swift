@@ -11,6 +11,7 @@ struct SearchView: View {
     @State private var searchText: String = ""
     @State private var searchResults: [FoodItem]?
     @State private var toScannerView: Bool = false
+    @State private var toAddFoodItemView: Bool = false
     @State private var selectedFoodItem: FoodItem?
     
     var feed: String {
@@ -110,6 +111,8 @@ struct SearchView: View {
                         )
                         .padding(.horizontal, 10)
                 }
+                .padding()
+                
                 NavigationLink(
                     destination: ScannerView(),
                     isActive: $toScannerView,
@@ -135,6 +138,7 @@ struct SearchView: View {
                                 .foregroundColor(.blue)
                                 .onTapGesture {
                                     selectedFoodItem = foodItem
+                                    toAddFoodItemView = true
                                 }
                         }
                         .padding()
@@ -151,6 +155,15 @@ struct SearchView: View {
                 }
 
             }
+            .background(
+                NavigationLink(
+                    destination: AddFoodItemView(upc: "", foodItem: selectedFoodItem),
+                    isActive: $toAddFoodItemView,
+                    label: {
+                        EmptyView()
+                    }
+                )
+            )
         //}
     }
 }
