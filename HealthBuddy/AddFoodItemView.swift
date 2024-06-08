@@ -27,6 +27,7 @@ struct AddFoodItemView: View {
     @State private var isNavigatingToHomeView = false
 
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var userManager: UserProfileManager
 
     
     enum SerializationError: Error{
@@ -232,6 +233,9 @@ struct AddFoodItemView: View {
             Button(action: {
                 //presentationMode.wrappedValue.dismiss()
                 isNavigatingToHomeView = true
+                userManager.dailyLog?.foodItems.append(currObj)
+                userManager.saveProfile()
+                isNavigatingToHomeView = true
             }) {
                 Text("Blue Button")
                     .foregroundColor(.white)
@@ -244,7 +248,7 @@ struct AddFoodItemView: View {
             Spacer().frame(height: 5)
             
             NavigationLink(
-                destination: HomeView(username: "Johnny"),
+                destination: HomeView(username: userManager.username),
                 isActive: $isNavigatingToHomeView,
                 label: {
                     EmptyView()
@@ -257,6 +261,7 @@ struct AddFoodItemView: View {
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
         .onAppear{
+            print(userManager.username)
             if let foodItem = foodItem{
                 currObj = foodItem
                 pname = foodItem.productName

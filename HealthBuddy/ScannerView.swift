@@ -11,6 +11,8 @@ struct ScannerView: View {
     @State private var upcString: String?
     @State private var isNavigating: Bool = false
     
+    @EnvironmentObject var userManager: UserProfileManager
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -21,7 +23,8 @@ struct ScannerView: View {
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
                 
-                NavigationLink(destination: AddFoodItemView(upc: upcString ?? ""), isActive: $isNavigating) {
+                NavigationLink(destination: AddFoodItemView(upc: upcString ?? "")
+                    .environmentObject(userManager), isActive: $isNavigating) {
                     EmptyView()
                 }
 //                .navigationBarTitle("")

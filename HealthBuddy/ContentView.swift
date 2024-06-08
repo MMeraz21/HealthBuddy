@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var username: String = ""
+    //@StateObject var userManager: UserProfileManager
 
     
     var body: some View {

@@ -50,6 +50,19 @@ struct HomeView: View {
                             Text("No data available")
                         }
                     }
+                    List {
+                        ForEach(userManager.dailyLog?.foodItems ?? []) { foodItem in
+                            VStack(alignment: .leading) {
+                                Text(foodItem.productName)
+                                    .font(.headline)
+                                Text(foodItem.brandName)
+                                    .font(.subheadline)
+                                // Add more details if needed
+                            }
+                            .padding(.vertical, 8)
+                        }
+                    }
+                    .listStyle(InsetGroupedListStyle())
                     
                     Spacer()
                     
@@ -59,7 +72,7 @@ struct HomeView: View {
                     Text("Home")
                 }
                 
-                SearchView()
+                SearchView().environmentObject(userManager)
                 .tabItem {
                     Image(systemName: "plus.circle.fill")
                     Text("Add")
@@ -83,7 +96,13 @@ struct HomeView: View {
         .onAppear{
             //setUpUserProfile()
             userManager.setUpUserProfile()
+            if let firstFoodItemName = userManager.dailyLog?.foodItems.first?.productName {
+                print("First food item name: \(firstFoodItemName)")
+            } else {
+                print("No food items available")
+            }
         }
+//        .environmentObject(userManager)
 
     }
 //    private func setUpUserProfile(){

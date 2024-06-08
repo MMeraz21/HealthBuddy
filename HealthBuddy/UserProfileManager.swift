@@ -8,17 +8,18 @@
 import Foundation
 
 class UserProfileManager: ObservableObject{
-    var username: String
+    @Published var username: String
     @Published var userProfile: UserProfile?
     @Published var dailyLog: DailyNutritionLog?
     
     init(username: String) {
         self.username = username
+        //setUpUserProfile()
     }
     
      func setUpUserProfile(){
         if let loadedProfile = UserProfileManager.loadUserProfile(username: username){
-            print("loading profile")
+            print("loading profile zzz")
             userProfile = loadedProfile
             dailyLog = userProfile?.setupDailyLog(for: Date())
         }else{

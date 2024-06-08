@@ -14,11 +14,14 @@ struct SearchView: View {
     @State private var toAddFoodItemView: Bool = false
     @State private var selectedFoodItem: FoodItem?
     
+    @EnvironmentObject var userManager: UserProfileManager
+    
     var feed: String {
         return "https://us.openfoodfacts.org/cgi/search.pl?search_terms=\(searchText)&search_simple=1&action=process&json=1"
     }
     
     func parseFoodList(){
+        print(userManager.username)
         guard let feedUrl = URL(string: feed) else {return}
         print(feed)
         
@@ -114,7 +117,7 @@ struct SearchView: View {
                 .padding()
                 
                 NavigationLink(
-                    destination: ScannerView(),
+                    destination: ScannerView().environmentObject(userManager),
                     isActive: $toScannerView,
                     label: {
                         EmptyView()
@@ -157,7 +160,8 @@ struct SearchView: View {
             }
             .background(
                 NavigationLink(
-                    destination: AddFoodItemView(upc: "", foodItem: selectedFoodItem),
+                    destination: AddFoodItemView(upc: "", foodItem: selectedFoodItem)
+                        .environmentObject(userManager),
                     isActive: $toAddFoodItemView,
                     label: {
                         EmptyView()
