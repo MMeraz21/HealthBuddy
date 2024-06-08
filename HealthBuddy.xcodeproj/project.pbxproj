@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		320B811D2C12CDEF00650A8F /* UserProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320B811C2C12CDEF00650A8F /* UserProfileManager.swift */; };
+		320B81212C150CE200650A8F /* CreateFoodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320B81202C150CE200650A8F /* CreateFoodItemView.swift */; };
 		325A03762C09972B0061C485 /* RoundedRectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A03752C09972B0061C485 /* RoundedRectLabel.swift */; };
 		325A03792C0A95930061C485 /* AddFoodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A03782C0A95930061C485 /* AddFoodItemView.swift */; };
 		325A037B2C0AB13B0061C485 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A037A2C0AB13B0061C485 /* FoodItem.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		320B811C2C12CDEF00650A8F /* UserProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileManager.swift; sourceTree = "<group>"; };
+		320B81202C150CE200650A8F /* CreateFoodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFoodItemView.swift; sourceTree = "<group>"; };
 		325A03752C09972B0061C485 /* RoundedRectLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectLabel.swift; sourceTree = "<group>"; };
 		325A03772C099BF60061C485 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		325A03782C0A95930061C485 /* AddFoodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodItemView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				32FEC2BE2C10415000A09524 /* HomeView.swift */,
 				32FEC2C02C1048FF00A09524 /* UserProfile.swift */,
 				320B811C2C12CDEF00650A8F /* UserProfileManager.swift */,
+				320B81202C150CE200650A8F /* CreateFoodItemView.swift */,
 			);
 			path = HealthBuddy;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32FEC2BF2C10415100A09524 /* HomeView.swift in Sources */,
+				320B81212C150CE200650A8F /* CreateFoodItemView.swift in Sources */,
 				325A03792C0A95930061C485 /* AddFoodItemView.swift in Sources */,
 				32FEC2C12C1048FF00A09524 /* UserProfile.swift in Sources */,
 				325A03762C09972B0061C485 /* RoundedRectLabel.swift in Sources */,
