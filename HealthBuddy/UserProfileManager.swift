@@ -7,7 +7,28 @@
 
 import Foundation
 
-class UserProfileManager {
+class UserProfileManager: ObservableObject{
+    var username: String
+    @Published var userProfile: UserProfile?
+    @Published var dailyLog: DailyNutritionLog?
+    
+    init(username: String) {
+        self.username = username
+    }
+    
+     func setUpUserProfile(){
+        if let loadedProfile = UserProfileManager.loadUserProfile(username: username){
+            print("loading profile")
+            userProfile = loadedProfile
+            dailyLog = userProfile?.setupDailyLog(for: Date())
+        }else{
+            let newUserProfile = UserProfile(username: username)
+            userProfile = newUserProfile
+            dailyLog = newUserProfile.setupDailyLog(for: Date())
+            UserProfileManager.saveUserProfile(newUserProfile)
+            print("making profile")
+        }
+    }
     
     static func saveUserProfile(_ userProfile: UserProfile) {
         let encoder = JSONEncoder()
@@ -24,5 +45,11 @@ class UserProfileManager {
             }
         }
         return nil
+    }
+    
+    func saveProfile(){
+        if let profile = userProfile{
+            UserProfileManager.saveUserProfile(profile)
+        }
     }
 }

@@ -9,9 +9,15 @@ import SwiftUI
 import Charts
 
 struct HomeView: View {
-    var username: String
-    @State private var userProfile: UserProfile?
-    @State private var dailyLog: DailyNutritionLog?
+    //var username: String
+//    @State private var userProfile: UserProfile?
+//    @State private var dailyLog: DailyNutritionLog?
+//    
+    @StateObject private var userManager: UserProfileManager
+    
+    init(username: String) {
+        _userManager = StateObject(wrappedValue: UserProfileManager(username: username))
+    }
     
     var todayDate: String{
         let formatter = DateFormatter()
@@ -24,7 +30,7 @@ struct HomeView: View {
             //Text("hello")
             TabView {
                 VStack {
-                    Text("Welcome Back, \(username)!")
+                    Text("Welcome Back, \(userManager.username)!")
                         //.font(.largeTitle)
                         .foregroundColor(.blue)
                         .padding(.top, 20)
@@ -38,8 +44,8 @@ struct HomeView: View {
                     
                     VStack {
                         Text("Calorie Goal:")
-                        if let remainingCalories = dailyLog?.calorieLimit {
-                            Text("\(remainingCalories - (dailyLog?.totalCalories() ?? 0.0))")
+                        if let remainingCalories = userManager.dailyLog?.calorieLimit {
+                            Text("\(remainingCalories - (userManager.dailyLog?.totalCalories() ?? 0.0))")
                         } else {
                             Text("No data available")
                         }
@@ -75,38 +81,39 @@ struct HomeView: View {
         .navigationBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear{
-            setUpUserProfile()
+            //setUpUserProfile()
+            userManager.setUpUserProfile()
         }
 
     }
-    private func setUpUserProfile(){
-        if let loadedProfile = UserProfileManager.loadUserProfile(username: username) {
-            print("loading profile")
-            userProfile = loadedProfile
-            if let todayLog = loadedProfile.history.first(where: { Calendar.current.isDateInToday($0.date) }){
-                print("loading log for today")
-                dailyLog = todayLog
-            }else{
-                print("creating log for today")
-                let newLog = DailyNutritionLog(date: Date())
-                dailyLog = newLog
-                userProfile?.history.append(newLog)
-                UserProfileManager.saveUserProfile(loadedProfile)
-            }
-        } else {
-            let newUserProfile = UserProfile(username: username, history: [], addedFoodItems: [])
-            userProfile = newUserProfile
-            let newLog = DailyNutritionLog()
-            dailyLog = newLog
-            userProfile?.history.append(newLog)
-            UserProfileManager.saveUserProfile(newUserProfile)
-            print("making profile and log")
-        }
-        
-        if let profile = userProfile {
-            dailyLog = profile.history.first 
-        }
-    }
+//    private func setUpUserProfile(){
+//        if let loadedProfile = UserProfileManager.loadUserProfile(username: username) {
+//            print("loading profile")
+//            userProfile = loadedProfile
+//            if let todayLog = loadedProfile.history.first(where: { Calendar.current.isDateInToday($0.date) }){
+//                print("loading log for today")
+//                dailyLog = todayLog
+//            }else{
+//                print("creating log for today")
+//                let newLog = DailyNutritionLog(date: Date())
+//                dailyLog = newLog
+//                userProfile?.history.append(newLog)
+//                UserProfileManager.saveUserProfile(loadedProfile)
+//            }
+//        } else {
+//            let newUserProfile = UserProfile(username: username, history: [], addedFoodItems: [])
+//            userProfile = newUserProfile
+//            let newLog = DailyNutritionLog()
+//            dailyLog = newLog
+//            userProfile?.history.append(newLog)
+//            UserProfileManager.saveUserProfile(newUserProfile)
+//            print("making profile and log")
+//        }
+//        
+////        if let profile = userProfile {
+////            dailyLog = profile.history.first 
+////        }
+//    }
 }
 
 
