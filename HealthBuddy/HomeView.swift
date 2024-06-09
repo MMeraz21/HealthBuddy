@@ -13,6 +13,7 @@ struct HomeView: View {
 //    @State private var userProfile: UserProfile?
 //    @State private var dailyLog: DailyNutritionLog?
 //    
+    @State private var isInSearchView = false
     @StateObject private var userManager: UserProfileManager
     
     init(username: String) {
@@ -57,7 +58,6 @@ struct HomeView: View {
                                     .font(.headline)
                                 Text(foodItem.brandName)
                                     .font(.subheadline)
-                                // Add more details if needed
                             }
                             .padding(.vertical, 8)
                         }
@@ -72,7 +72,7 @@ struct HomeView: View {
                     Text("Home")
                 }
                 
-                SearchView().environmentObject(userManager)
+                SearchView(isInSearchView: $isInSearchView).environmentObject(userManager)
                 .tabItem {
                     Image(systemName: "plus.circle.fill")
                     Text("Add")
@@ -88,6 +88,19 @@ struct HomeView: View {
             }
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarItems(leading: Text("HealthBuddy").font(.title).foregroundColor(.blue))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if isInSearchView {
+                        Button(action: {
+                            // Add the action for the checkmark button here
+                            print("Checkmark tapped")
+                        }) {
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.blue)
+                        }
+                    }
+                }
+            }
 
 
         }
@@ -102,37 +115,9 @@ struct HomeView: View {
                 print("No food items available")
             }
         }
-//        .environmentObject(userManager)
 
     }
-//    private func setUpUserProfile(){
-//        if let loadedProfile = UserProfileManager.loadUserProfile(username: username) {
-//            print("loading profile")
-//            userProfile = loadedProfile
-//            if let todayLog = loadedProfile.history.first(where: { Calendar.current.isDateInToday($0.date) }){
-//                print("loading log for today")
-//                dailyLog = todayLog
-//            }else{
-//                print("creating log for today")
-//                let newLog = DailyNutritionLog(date: Date())
-//                dailyLog = newLog
-//                userProfile?.history.append(newLog)
-//                UserProfileManager.saveUserProfile(loadedProfile)
-//            }
-//        } else {
-//            let newUserProfile = UserProfile(username: username, history: [], addedFoodItems: [])
-//            userProfile = newUserProfile
-//            let newLog = DailyNutritionLog()
-//            dailyLog = newLog
-//            userProfile?.history.append(newLog)
-//            UserProfileManager.saveUserProfile(newUserProfile)
-//            print("making profile and log")
-//        }
-//        
-////        if let profile = userProfile {
-////            dailyLog = profile.history.first 
-////        }
-//    }
+
 }
 
 

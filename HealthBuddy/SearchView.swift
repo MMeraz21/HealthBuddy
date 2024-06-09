@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
+    @Binding var isInSearchView: Bool
     @State private var searchText: String = ""
     @State private var searchResults: [FoodItem]?
     @State private var toScannerView: Bool = false
@@ -156,7 +157,14 @@ struct SearchView: View {
                         .foregroundColor(.gray)
                     Spacer()
                 }
+                
 
+            }
+            .onAppear{
+                isInSearchView = true
+            }
+            .onDisappear{
+                isInSearchView = false
             }
 
             .background(
@@ -169,8 +177,10 @@ struct SearchView: View {
                     }
                 )
             )
+
         //} //navigation bracket
     }
+    
 }
 
 //#Preview {
@@ -181,11 +191,20 @@ struct SearchView: View {
 //}
 
 struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        let userManager = UserProfileManager(username: "Johnny")
-        userManager.setUpUserProfile()
+    struct SearchViewPreviewWrapper: View {
+        @State var isInSearchView = true
 
-        return SearchView()
-            .environmentObject(userManager)
+        var body: some View {
+            let userManager = UserProfileManager(username: "Johnny")
+            userManager.setUpUserProfile()
+
+            return SearchView(isInSearchView: $isInSearchView)
+                .environmentObject(userManager)
+        }
+    }
+
+    static var previews: some View {
+        SearchViewPreviewWrapper()
     }
 }
+
