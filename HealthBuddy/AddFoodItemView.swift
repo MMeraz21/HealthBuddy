@@ -296,6 +296,6 @@ struct WhiteBGStyle: TextFieldStyle {
     }
 }
 
-#Preview {
-    AddFoodItemView(upc: "043000208120")
-}
+//#Preview {
+//    AddFoodItemView(upc: "043000208120")
+//}
