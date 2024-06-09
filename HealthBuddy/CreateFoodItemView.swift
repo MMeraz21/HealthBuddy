@@ -27,13 +27,22 @@ struct CreateFoodItemView: View {
     
     
     var body: some View {
-        TextField("Product Name", text: $pname)
-            .fixedSize(horizontal: true, vertical: false)
-            .padding(.leading, 8)
+        VStack(alignment: .leading){
+            TextField("Product Name", text: $pname)
+                .fixedSize(horizontal: true, vertical: false)
+                .padding(.leading, 8)
+            
+            TextField("Brand Name", text: $pname)
+                .fixedSize(horizontal: true, vertical: false)
+                .padding(.leading, 8)
+        }
+        .frame(alignment: .topLeading)
+        .padding([.top, .leading, .trailing])
+        .alignmentGuide(.top) { d in d[.top] }
+        .padding(.horizontal)
         
-        TextField("Brand Name", text: $pname)
-            .fixedSize(horizontal: true, vertical: false)
-            .padding(.leading, 8)
+        Spacer().frame(height: 40)
+
         
         HStack{
             Text("Serving Size:")
@@ -154,7 +163,7 @@ struct CreateFoodItemView: View {
             userManager.saveProfile()
             //isNavigatingToHomeView = true
         }) {
-            Text("Blue Button")
+            Text("Create Item")
                 .foregroundColor(.white)
                 .padding()
                 .background(Color.blue)

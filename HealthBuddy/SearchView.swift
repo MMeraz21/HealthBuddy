@@ -158,6 +158,7 @@ struct SearchView: View {
                 }
 
             }
+
             .background(
                 NavigationLink(
                     destination: AddFoodItemView(upc: "", foodItem: selectedFoodItem)
@@ -168,10 +169,23 @@ struct SearchView: View {
                     }
                 )
             )
-        //}
+        //} //navigation bracket
     }
 }
 
-#Preview {
-    SearchView()
+//#Preview {
+//    let userManager = UserProfileManager(username: "Johnny")
+//    userManager.setUpUserProfile()
+//    SearchView()
+//        .environmentObject(userManager)
+//}
+
+struct SearchView_Previews: PreviewProvider {
+    static var previews: some View {
+        let userManager = UserProfileManager(username: "Johnny")
+        userManager.setUpUserProfile()
+
+        return SearchView()
+            .environmentObject(userManager)
+    }
 }
