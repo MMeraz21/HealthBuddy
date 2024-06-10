@@ -11,6 +11,8 @@ struct HistoryView: View {
     @EnvironmentObject var userManager: UserProfileManager
     @State var currObj: DailyNutritionLog?
     @State var currIndex: Int?
+    @State var showAlert = false
+    @State var alertMessage = ""
 
     var body: some View {
         VStack{
@@ -30,6 +32,8 @@ struct HistoryView: View {
                             }
                         }else{
                             print("cant go further left")
+                            alertMessage = "This is the furthest we can go back"
+                            showAlert = true
                         }
                         
                     }
@@ -51,6 +55,8 @@ struct HistoryView: View {
                         if let currObjDate = currObj?.date, Calendar.current.isDateInToday(currObjDate){
                             print("this is todays log, cant go into the future")
                             print(currIndex)
+                            alertMessage = "This is today's log, cant go into the future"
+                            showAlert = true
                         }else{
                             currIndex! += 1
                             if let rightObj  = userManager.userProfile?.history[currIndex ?? -1]{
@@ -79,6 +85,9 @@ struct HistoryView: View {
         .onAppear{
             currObj = userManager.dailyLog
             currIndex = (userManager.userProfile?.history.count ?? 0) - 1
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("ALERT"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
         
         

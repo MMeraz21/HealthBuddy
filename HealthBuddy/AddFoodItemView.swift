@@ -234,12 +234,12 @@ struct AddFoodItemView: View {
             
             Button(action: {
                 //presentationMode.wrappedValue.dismiss()
-                isNavigatingToHomeView = true
+                //isNavigatingToHomeView = true
                 userManager.dailyLog?.foodItems.append(currObj)
                 userManager.saveProfile()
                 isNavigatingToHomeView = true
             }) {
-                Text("Blue Button")
+                Text("Add Item")
                     .foregroundColor(.white)
                     .padding()
                     .background(Color.blue)
