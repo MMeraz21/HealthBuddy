@@ -13,6 +13,7 @@
 		325A03792C0A95930061C485 /* AddFoodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A03782C0A95930061C485 /* AddFoodItemView.swift */; };
 		325A037B2C0AB13B0061C485 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A037A2C0AB13B0061C485 /* FoodItem.swift */; };
 		326081E72C16B3D0000B7C3A /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326081E62C16B3D0000B7C3A /* HistoryView.swift */; };
+		326081E92C1702E3000B7C3A /* ViewFoodItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326081E82C1702E3000B7C3A /* ViewFoodItemView.swift */; };
 		327743CB2C09484800368411 /* HealthBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327743CA2C09484800368411 /* HealthBuddyApp.swift */; };
 		327743CD2C09484800368411 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327743CC2C09484800368411 /* ContentView.swift */; };
 		327743CF2C09485100368411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 327743CE2C09485100368411 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		325A03782C0A95930061C485 /* AddFoodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodItemView.swift; sourceTree = "<group>"; };
 		325A037A2C0AB13B0061C485 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
 		326081E62C16B3D0000B7C3A /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		326081E82C1702E3000B7C3A /* ViewFoodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFoodItemView.swift; sourceTree = "<group>"; };
 		327743C72C09484800368411 /* HealthBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		327743CA2C09484800368411 /* HealthBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBuddyApp.swift; sourceTree = "<group>"; };
 		327743CC2C09484800368411 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				320B811C2C12CDEF00650A8F /* UserProfileManager.swift */,
 				320B81202C150CE200650A8F /* CreateFoodItemView.swift */,
 				326081E62C16B3D0000B7C3A /* HistoryView.swift */,
+				326081E82C1702E3000B7C3A /* ViewFoodItemView.swift */,
 			);
 			path = HealthBuddy;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				326081E72C16B3D0000B7C3A /* HistoryView.swift in Sources */,
 				327743CB2C09484800368411 /* HealthBuddyApp.swift in Sources */,
 				325A037B2C0AB13B0061C485 /* FoodItem.swift in Sources */,
+				326081E92C1702E3000B7C3A /* ViewFoodItemView.swift in Sources */,
 				32FEC2B92C1015C500A09524 /* ScannerView.swift in Sources */,
 				327743F52C09867100368411 /* DocumentScannerView.swift in Sources */,
 				320B811D2C12CDEF00650A8F /* UserProfileManager.swift in Sources */,
