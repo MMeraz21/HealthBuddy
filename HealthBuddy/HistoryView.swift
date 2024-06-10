@@ -23,9 +23,9 @@ struct HistoryView: View {
 //                        if let leftObj = userManager.userProfile?.history[currIndex ?? -1]{
 //                            currObj = leftObj
 //                        }
-                        if let currIndex = currIndex, currIndex >= 0{
+                        if let currIndex = currIndex, currIndex > 0{
                             self.currIndex! -= 1
-                            if let leftObj = userManager.userProfile?.history[currIndex]{
+                            if let leftObj = userManager.userProfile?.history[self.currIndex!]{
                                 currObj = leftObj
                             }
                         }else{
