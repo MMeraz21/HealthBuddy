@@ -26,6 +26,12 @@ class DailyNutritionLog: Codable {
         self.sugarLimit = sugarLimit
     }
     
+    func dateToString()->String{
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: date)
+    }
+    
     func addFoodItem(_ foodItem: FoodItem) {
         foodItems.append(foodItem)
     }
