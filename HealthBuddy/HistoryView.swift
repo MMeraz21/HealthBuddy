@@ -69,15 +69,20 @@ struct HistoryView: View {
             
             Text(currObj?.dateToString() ?? "")
                 .padding()
+            
             List {
                 ForEach(currObj?.foodItems ?? []) { foodItem in
-                    VStack(alignment: .leading) {
-                        Text(foodItem.productName)
-                            .font(.headline)
-                        Text(foodItem.brandName)
-                            .font(.subheadline)
-                    }
-                    .padding(.vertical, 8)
+                    NavigationLink(
+                        destination: ViewFoodItemView(currObj: foodItem),
+                        label: {
+                            VStack(alignment: .leading) {
+                                Text(foodItem.productName)
+                                    .font(.headline)
+                                Text(foodItem.brandName)
+                                    .font(.subheadline)
+                            }
+                            .padding(.vertical, 8)
+                        })
                 }
             }
             .listStyle(InsetGroupedListStyle())

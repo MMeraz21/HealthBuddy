@@ -47,10 +47,7 @@ struct HomeView: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                             .padding(.top, 5)
-                        
-                        
-                        
-                        //Spacer()
+
                         
                         VStack {
                             VStack{
@@ -100,11 +97,6 @@ struct HomeView: View {
                                 }
                             }
                             .listStyle(InsetGroupedListStyle())
-                            
-                            
-                            
-                            
-                            
                             
                             
                         }

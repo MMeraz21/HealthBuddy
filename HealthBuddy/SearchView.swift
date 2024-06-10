@@ -153,8 +153,38 @@ struct SearchView: View {
 
 
                 } else {
-                    Text("No search results found")
+                    Text("Your Custom Food Items")
                         .foregroundColor(.gray)
+                    if let history = userManager.userProfile?.addedFoodItems{
+                        List(history) { foodItem in
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(foodItem.productName)
+                                        .font(.headline)
+                                    Text(foodItem.brandName)
+                                        .font(.subheadline)
+                                }
+                                
+                                Spacer()
+                                
+                                Image(systemName: "plus.circle")
+                                    .foregroundColor(.blue)
+                                    .onTapGesture {
+                                        selectedFoodItem = foodItem
+                                        toAddFoodItemView = true
+                                    }
+                            }
+                            .padding()
+                            .cornerRadius(8)
+                            //.shadow(radius: 1)
+                        }
+                        .listStyle(.insetGrouped)
+
+
+                    }else{
+                        Text("No search results found")
+                            .foregroundColor(.gray)
+                    }
                     Spacer()
                 }
                 
