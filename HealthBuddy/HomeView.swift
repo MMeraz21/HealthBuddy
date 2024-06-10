@@ -78,9 +78,7 @@ struct HomeView: View {
                         Text("Add")
                     }
                 
-                VStack{
-                    Text("History")
-                }
+                HistoryView().environmentObject(userManager)
                 .tabItem {
                     Image(systemName: "clock.fill")
                     Text("History")
