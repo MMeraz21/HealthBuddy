@@ -19,9 +19,17 @@ struct HistoryView: View {
                     .padding()
                     .onTapGesture {
                         print("left")
-                        currIndex! -= 1
-                        if let leftObj = userManager.userProfile?.history[currIndex ?? -1]{
-                            currObj = leftObj
+//                        currIndex! -= 1
+//                        if let leftObj = userManager.userProfile?.history[currIndex ?? -1]{
+//                            currObj = leftObj
+//                        }
+                        if let currIndex = currIndex, currIndex >= 0{
+                            self.currIndex! -= 1
+                            if let leftObj = userManager.userProfile?.history[currIndex]{
+                                currObj = leftObj
+                            }
+                        }else{
+                            print("cant go further left")
                         }
                         
                     }
@@ -36,9 +44,18 @@ struct HistoryView: View {
                     .padding()
                     .onTapGesture {
                         print("right")
-                        currIndex! += 1
-                        if let rightObj = userManager.userProfile?.history[currIndex ?? -1]{
-                            currObj = rightObj
+//                        currIndex! += 1
+//                        if let rightObj = userManager.userProfile?.history[currIndex ?? -1]{
+//                            currObj = rightObj
+//                        }
+                        if let currObjDate = currObj?.date, Calendar.current.isDateInToday(currObjDate){
+                            print("this is todays log, cant go into the future")
+                            print(currIndex)
+                        }else{
+                            currIndex! += 1
+                            if let rightObj  = userManager.userProfile?.history[currIndex ?? -1]{
+                                currObj = rightObj
+                            }
                         }
                     }
             }
