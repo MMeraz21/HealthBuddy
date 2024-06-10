@@ -126,11 +126,11 @@ struct AddFoodItemView: View {
         VStack {
             VStack(alignment: .leading){
                 Text(currObj.productName)
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding(.bottom, 4)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(currObj.brandName)
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding(.bottom, 4)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -150,7 +150,7 @@ struct AddFoodItemView: View {
             
             HStack{
                 Text("Serving Size")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
                 
                 Spacer()
@@ -163,71 +163,71 @@ struct AddFoodItemView: View {
                     .padding(.leading, 8)
                 //.padding(.bottom, 2)
                 //.foregroundColor(.black)
-                    .background(Color.white)
+                    //.background(Color.white)
                 
                 
                 
                 Text("g")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
                 
             }
             HStack{
                 Text("Calories")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
                 
                 Spacer()
                 
                 Text("\(Int(viewCalories)) kcal")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
             }
             HStack{
                 Text("Fat")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
                 
                 Spacer()
                 
                 Text("\(Int(viewFat)) g")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
                 
             }
             HStack{
                 Text("Protein")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
                 
                 Spacer()
                 
                 Text("\(Int(viewProtein)) g")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
                 
             }
             HStack{
                 Text("Carbohydrates")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
                 
                 Spacer()
                 
                 Text("\(Int(viewCarbs)) g")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
                 
             }
             HStack{
                 Text("Sugar")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
                 
                 Spacer()
                 
                 Text("\(Int(viewSugar)) g")
-                    .foregroundColor(.black)
+                    //.foregroundColor(.black)
                     .padding()
             }
             Spacer().frame(height: 100)
@@ -261,7 +261,7 @@ struct AddFoodItemView: View {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity) //needed to not inherit bg from parent view
-        .background(Color.white)
+        //.background(Color.white)
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
         .onAppear{
@@ -290,13 +290,13 @@ struct WhiteBGStyle: TextFieldStyle {
     func _body(configuration: TextField<_Label>) -> some View {
         configuration
             .padding(5)
-            .background(Color.white)
+            //.background(Color.white)
             .cornerRadius(5)
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(Color.gray, lineWidth: 1)
             )
-            .foregroundColor(.black)
+            //.foregroundColor(.black)
     }
 }
 
