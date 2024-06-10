@@ -13,6 +13,7 @@ struct HomeView: View {
 //    @State private var userProfile: UserProfile?
 //    @State private var dailyLog: DailyNutritionLog?
 //    
+    @State private var toCreateFoodView = false
     @State private var isInSearchView = false
     @StateObject private var userManager: UserProfileManager
     
@@ -28,11 +29,10 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            //Text("hello")
+            ZStack{
             TabView {
                 VStack {
                     Text("Welcome Back, \(userManager.username)!")
-                        //.font(.largeTitle)
                         .foregroundColor(.blue)
                         .padding(.top, 20)
                     
@@ -73,10 +73,10 @@ struct HomeView: View {
                 }
                 
                 SearchView(isInSearchView: $isInSearchView).environmentObject(userManager)
-                .tabItem {
-                    Image(systemName: "plus.circle.fill")
-                    Text("Add")
-                }
+                    .tabItem {
+                        Image(systemName: "plus.circle.fill")
+                        Text("Add")
+                    }
                 
                 VStack{
                     Text("History")
@@ -86,14 +86,15 @@ struct HomeView: View {
                     Text("History")
                 }
             }
+            
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarItems(leading: Text("HealthBuddy").font(.title).foregroundColor(.blue))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if isInSearchView {
                         Button(action: {
-                            // Add the action for the checkmark button here
-                            print("Checkmark tapped")
+                            toCreateFoodView = true
+                            //print("Checkmark tapped")
                         }) {
                             Image(systemName: "checkmark")
                                 .foregroundColor(.blue)
@@ -101,13 +102,19 @@ struct HomeView: View {
                     }
                 }
             }
-
-
+                NavigationLink(
+                    destination: CreateFoodItemView().environmentObject(userManager),
+                    isActive: $toCreateFoodView,
+                    label: {
+                        EmptyView()
+                    }
+                )
         }
+    }
+        
         .navigationBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear{
-            //setUpUserProfile()
             userManager.setUpUserProfile()
             if let firstFoodItemName = userManager.dailyLog?.foodItems.first?.productName {
                 print("First food item name: \(firstFoodItemName)")

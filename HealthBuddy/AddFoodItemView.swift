@@ -121,6 +121,8 @@ struct AddFoodItemView: View {
     }
     
     var body: some View {
+        ScrollView{
+            Spacer().frame(height:40)
         VStack {
             VStack(alignment: .leading){
                 Text(currObj.productName)
@@ -131,7 +133,7 @@ struct AddFoodItemView: View {
                     .foregroundColor(.black)
                     .padding(.bottom, 4)
                     .frame(maxWidth: .infinity, alignment: .leading)
-
+                
             }
             .frame(alignment: .topLeading)
             .padding([.top, .leading, .trailing])
@@ -159,16 +161,16 @@ struct AddFoodItemView: View {
                     .frame(minWidth: 30)
                     .fixedSize(horizontal: true, vertical: false)
                     .padding(.leading, 8)
-                    //.padding(.bottom, 2)
-                    //.foregroundColor(.black)
+                //.padding(.bottom, 2)
+                //.foregroundColor(.black)
                     .background(Color.white)
-
-
+                
+                
                 
                 Text("g")
                     .foregroundColor(.black)
                     .padding()
-
+                
             }
             HStack{
                 Text("Calories")
@@ -255,6 +257,8 @@ struct AddFoodItemView: View {
                 }
             )
             
+        }}.onTapGesture() {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity) //needed to not inherit bg from parent view
         .background(Color.white)
